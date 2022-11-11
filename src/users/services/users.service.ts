@@ -1,9 +1,9 @@
 import { Injectable, NotFoundException, Inject } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { FilterQuery, Repository } from 'typeorm';
 import { ConfigService } from '@nestjs/config';
 
-import { User } from '../entities/user.entity';
+import { FilterUserDto, User } from '../entities/user.entity';
 //import { Order } from '../entities/order.entity';
 import { CreateUserDto, UpdateUserDto } from '../dtos/user.dto';
 
@@ -14,7 +14,13 @@ import { isNotEmpty } from 'class-validator';
 export class UsersService {
   constructor(@InjectRepository(User) private userRepo: Repository<User>) {}
 
-  findAll() {
+  findAll(params?: FilterUserDto) {
+    if (params) {
+      const { email, name } = params;
+      return this.userRepo.find({
+        where: [{ email: email }, { name: name }],
+      });
+    }
     return this.userRepo.find();
   }
 
