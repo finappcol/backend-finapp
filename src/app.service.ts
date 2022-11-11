@@ -29,8 +29,8 @@ export class AppService {
     @Inject(config.KEY) private configService: ConfigType<typeof config>,
   ) {}
   getHello(): string {
-    const apiKey = this.configService.apiKey;
-    const name = this.configService.postgres.database;
-    return `Hello World! ${apiKey} ${name}`;
+    //const apiKey = this.configService.apiKey;
+    //const name = this.configService.postgres.database;
+    return `Bienvenido a Finapp!`;
   }
 }

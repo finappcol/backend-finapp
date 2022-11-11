@@ -3,9 +3,9 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { FilterQuery, Repository } from 'typeorm';
 import { ConfigService } from '@nestjs/config';
 
-import { FilterUserDto, User } from '../entities/user.entity';
+import { User } from '../entities/user.entity';
 //import { Order } from '../entities/order.entity';
-import { CreateUserDto, UpdateUserDto } from '../dtos/user.dto';
+import { CreateUserDto, FilterUserDto, UpdateUserDto } from '../dtos/user.dto';
 
 import { Client } from 'pg';
 import { isNotEmpty } from 'class-validator';
@@ -18,7 +18,7 @@ export class UsersService {
     if (params) {
       const { email, name } = params;
       return this.userRepo.find({
-        where: [{ email: email }, { name: name }],
+        where: { email: email },
       });
     }
     return this.userRepo.find();

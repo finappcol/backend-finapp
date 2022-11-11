@@ -12,8 +12,7 @@ import {
 
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
 import { UsersService } from '../services/users.service';
-import { CreateUserDto, UpdateUserDto } from '../dtos/user.dto';
-import { FilterUserDto } from '../entities/user.entity';
+import { CreateUserDto, FilterUserDto, UpdateUserDto } from '../dtos/user.dto';
 
 @ApiTags('users')
 @Controller('users')
