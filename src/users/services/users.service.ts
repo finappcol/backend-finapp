@@ -1,14 +1,14 @@
-import { Injectable, NotFoundException, Inject } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { FilterQuery, Repository } from 'typeorm';
-import { ConfigService } from '@nestjs/config';
+import { Repository } from 'typeorm';
+//import { ConfigService } from '@nestjs/config';
 
 import { User } from '../entities/user.entity';
 //import { Order } from '../entities/order.entity';
 import { CreateUserDto, FilterUserDto, UpdateUserDto } from '../dtos/user.dto';
 
-import { Client } from 'pg';
-import { isNotEmpty } from 'class-validator';
+//import { Client } from 'pg';
+//import { isNotEmpty } from 'class-validator';
 
 @Injectable()
 export class UsersService {
@@ -16,7 +16,7 @@ export class UsersService {
 
   findAll(params?: FilterUserDto) {
     if (params) {
-      const { email, name } = params;
+      const { email } = params;
       return this.userRepo.find({
         where: { email: email },
       });

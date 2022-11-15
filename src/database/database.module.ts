@@ -4,7 +4,7 @@ import { Client } from 'pg';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import config from '../config';
 
-import { User } from '../users/entities/user.entity';
+//import { User } from '../users/entities/user.entity';
 
 const API_KEY = '12345634';
 const API_KEY_PROD = 'PROD1212121SA';
@@ -15,18 +15,20 @@ const API_KEY_PROD = 'PROD1212121SA';
     TypeOrmModule.forRootAsync({
       inject: [config.KEY],
       useFactory: (configService: ConfigType<typeof config>) => {
-        const { user, host, database, password, port } = configService.postgres;
+        const { user, host, database, password, port } = configService.mysql;
         return {
-          type: 'postgres',
+          type: 'mysql',
           host,
           port,
           username: user,
           password,
           database: database,
-          ssl: {
+          //synchronize: true,
+          autoLoadEntities: true,
+          /*ssl: {
             rejectUnauthorized: false,
           },
-          entities: [User],
+          entities: [User],*/
         };
       },
     }),
@@ -38,7 +40,7 @@ const API_KEY_PROD = 'PROD1212121SA';
     },
     {
       provide: 'PG',
-      useFactory: (configService: ConfigType<typeof config>) => {
+      useFactory: (/*configService: ConfigType<typeof config>*/) => {
         //const { user, host, database, password, port } = configService.postgres;
         const client = new Client({
           user: 'lcnnyuwvcwhliu',

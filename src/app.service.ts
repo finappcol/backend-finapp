@@ -1,8 +1,8 @@
 import { Injectable, Inject } from '@nestjs/common';
-import { ConfigService, ConfigType } from '@nestjs/config';
+import { ConfigType } from '@nestjs/config';
 import config from './config';
 //import { Client } from 'pg';
-import { ClientRequest } from 'http';
+//import { ClientRequest } from 'http';
 
 /*const client = new Client({
     user: 'lcnnyuwvcwhliu',
