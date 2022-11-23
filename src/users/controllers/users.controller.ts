@@ -36,6 +36,12 @@ export class UsersController {
   ) {
     return this.usersService.update(id, payload);
   }
+
+  @Get('/profile/:profile')
+  @ApiOperation({ summary: 'List of users' })
+  findByProfile(@Param('profile') profile: string) {
+    return this.usersService.findByProfile(profile);
+  }
   /*
   @Delete(':id')
   remove(@Param('id', ParseIntPipe) id: number) {

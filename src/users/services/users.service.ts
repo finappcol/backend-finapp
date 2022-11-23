@@ -1,18 +1,20 @@
+//export type User = EntityTarget<unknown>;
+
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-//import { ConfigService } from '@nestjs/config';
+import { Repository, DataSource } from 'typeorm';
 
 import { User } from '../entities/user.entity';
-//import { Order } from '../entities/order.entity';
 import { CreateUserDto, FilterUserDto, UpdateUserDto } from '../dtos/user.dto';
-
-//import { Client } from 'pg';
-//import { isNotEmpty } from 'class-validator';
+import dataSource from 'src/database/dataSource';
 
 @Injectable()
 export class UsersService {
-  constructor(@InjectRepository(User) private userRepo: Repository<User>) {}
+  constructor(
+    @InjectRepository(User)
+    private userRepo: Repository<User>,
+    private dataSource: DataSource,
+  ) {}
 
   findAll(params?: FilterUserDto) {
     if (params) {
@@ -27,7 +29,7 @@ export class UsersService {
   findOne(id: number) {
     const user = this.userRepo.findOne({
       where: {
-        id: id,
+        userId: id,
       },
     });
     if (!user) {
@@ -42,12 +44,34 @@ export class UsersService {
   }
 
   async update(id: number, changes: UpdateUserDto) {
-    const user = await this.userRepo.findOne({ where: { id: id } });
+    const user = await this.userRepo.findOne({ where: { userId: id } });
     this.userRepo.merge(user, changes);
     return this.userRepo.save(user);
   }
 
   remove(id: number) {
     return this.userRepo.delete(id);
+  }
+
+  async findByProfile(profile: string) {
+    const basic = [
+      'user.userId',
+      'user.firstName',
+      'user.lastName',
+      'user.email',
+      'user.cellPhone',
+      'user.photo',
+    ];
+
+    const user = await this.dataSource
+      .getRepository(User)
+      .createQueryBuilder('user')
+      .select(profile == 'basic' ? basic : ['user'])
+      .getOne();
+
+    if (!user) {
+      throw new NotFoundException(`User #${profile} not found`);
+    }
+    return user;
   }
 }
