@@ -42,13 +42,24 @@ const API_KEY_PROD = 'PROD1212121SA';
       provide: 'PG',
       useFactory: (/*configService: ConfigType<typeof config>*/) => {
         //const { user, host, database, password, port } = configService.postgres;
-        const client = new Client({
+        /*const client = new Client({
           user: 'lcnnyuwvcwhliu',
           host: 'ec2-3-222-49-168.compute-1.amazonaws.com',
           database: 'd99fc9premo42e',
           password:
             'f3323821788cb9d0192560213df835759ecc88c53503bf195a6148df6c532722',
           port: 5432,
+          ssl: {
+            rejectUnauthorized: false,
+          },
+        });*/
+        const client = new Client({
+          user: 'postgres',
+          host: 'containers-us-west-113.railway.app',
+          database: 'railway',
+          password:
+            'dL6Lk2VsSC827EuTN1dS',
+          port: 7608,
           ssl: {
             rejectUnauthorized: false,
           },

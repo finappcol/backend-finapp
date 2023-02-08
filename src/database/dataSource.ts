@@ -7,7 +7,7 @@ export default new DataSource({
   host: 'containers-us-west-113.railway.app',
   port: 7608,
   username: 'postgres',
-  password: 'uAA9mCtQ0hQm8BwupKUT',
+  password: 'dL6Lk2VsSC827EuTN1dS',
   database: 'railway',
   logging: true,
   synchronize: false,
