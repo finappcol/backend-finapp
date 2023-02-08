@@ -9,6 +9,7 @@ import { UsersModule } from './users/users.module';
 import { DatabaseModule } from './database/database.module';
 import { enviroments } from './enviroments';
 import config from './config';
+import { AmortizationsModule } from './models/amortizations/amortizations.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import config from './config';
     HttpModule,
     UsersModule,
     DatabaseModule,
+    AmortizationsModule
   ],
   controllers: [AppController],
   providers: [
