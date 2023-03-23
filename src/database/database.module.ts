@@ -58,7 +58,7 @@ const API_KEY_PROD = 'PROD1212121SA';
           host: 'containers-us-west-113.railway.app',
           database: 'railway',
           password:
-            'dL6Lk2VsSC827EuTN1dS',
+            'D2T8aEhsWOPFDhFFyMel',
           port: 7608,
           ssl: {
             rejectUnauthorized: false,
