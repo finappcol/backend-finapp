@@ -6,7 +6,9 @@ import { Repository, DataSource } from 'typeorm';
 
 import { User } from '../entities/user.entity';
 import { CreateUserDto, FilterUserDto, UpdateUserDto } from '../dtos/user.dto';
+import { Like } from "typeorm";
 import dataSource from 'src/database/dataSource';
+import { string } from 'joi';
 
 @Injectable()
 export class UsersService {
@@ -18,9 +20,16 @@ export class UsersService {
 
   findAll(params?: FilterUserDto) {
     if (params) {
-      const { email } = params;
+      const  email  = params.email;
+      const  name  = params.name;
+      console.log(email);
+      console.log(name);
       return this.userRepo.find({
-        where: { email: email },
+        where : [
+          { email: email},
+          { firstName: Like("%"+name+"%")},
+          { secondName: Like("%"+name+"%")}
+        ]
       });
     }
     return this.userRepo.find();
