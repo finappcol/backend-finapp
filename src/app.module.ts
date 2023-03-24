@@ -5,11 +5,13 @@ import { ConfigModule } from '@nestjs/config';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UsersModule } from './users/users.module';
 import { DatabaseModule } from './database/database.module';
 import { enviroments } from './enviroments';
 import config from './config';
 import { AmortizationsModule } from './models/amortizations/amortizations.module';
+import { RatesModule } from './models/rates/rates.module';
+import { CatalogsModule } from './models/catalogs/catalogs.module';
+import { UsersModule } from './models/users/users.module';
 
 @Module({
   imports: [
@@ -26,7 +28,9 @@ import { AmortizationsModule } from './models/amortizations/amortizations.module
     HttpModule,
     UsersModule,
     DatabaseModule,
-    AmortizationsModule
+    AmortizationsModule,
+    RatesModule,
+    CatalogsModule
   ],
   controllers: [AppController],
   providers: [

@@ -1,6 +1,6 @@
-import { JobUser } from 'src/users/entities/jobUser.entity';
+//import { JobUser } from 'src/users/entities/jobUser.entity';
 import { DataSource } from 'typeorm';
-import { User } from '../users/entities/user.entity';
+//import { User } from '../users/entities/user.entity';
 
 export default new DataSource({
   type: 'postgres',

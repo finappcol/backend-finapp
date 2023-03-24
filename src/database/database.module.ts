@@ -4,7 +4,7 @@ import { Client } from 'pg';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import config from '../config';
 
-import { User } from '../users/entities/user.entity';
+//import { User } from '../users/entities/user.entity';
 
 const API_KEY = '12345634';
 const API_KEY_PROD = 'PROD1212121SA';
