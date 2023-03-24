@@ -2,7 +2,7 @@ import { Controller, Get } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { CatalogsService } from '../../services/catalogs/catalogs.service';
 
-@ApiTags('rates')
+@ApiTags('catalogs')
 @Controller('catalogs')
 export class CatalogsController {
     constructor(private catalogsService: CatalogsService) {}
@@ -10,5 +10,15 @@ export class CatalogsController {
     @Get('/banks')
     getBanks() {
         return this.catalogsService.getBanks();
+    }
+
+    @Get('/agreements')
+    getAgreements() {
+        return this.catalogsService.getAgreements();
+    }
+
+    @Get('/types')
+    getTypes() {
+        return this.catalogsService.getTypes();
     }
 }

@@ -268,3 +268,18 @@ INSERT INTO public."financialEntity" ("name") VALUES('Red Multibanca Colpatria')
 INSERT INTO public."financialEntity" ("name") VALUES('Simple S.A');
 INSERT INTO public."financialEntity" ("name") VALUES('FOGAFIN');
 INSERT INTO public."financialEntity" ("name") VALUES('JFK Cooperativa financiera');
+
+INSERT INTO public.agreement (agreement, active, pensioner) VALUES('CASUR', FALSE, TRUE);
+INSERT INTO public.agreement (agreement, active, pensioner) VALUES('POLICIA NACIONAL', FALSE, TRUE);
+INSERT INTO public.agreement (agreement, active, pensioner) VALUES('FOPEP', TRUE, FALSE);
+INSERT INTO public.agreement (agreement, active, pensioner) VALUES('SECRETARIA DE EDUCACION DE BOGOTA', TRUE, FALSE);
+INSERT INTO public.agreement (agreement, active, pensioner) VALUES('SEDUCA', TRUE, FALSE);
+INSERT INTO public.agreement (agreement, active, pensioner) VALUES('SECRETARIA DE EDUCACION DE MEDELLIN', TRUE, FALSE);
+INSERT INTO public.agreement (agreement, active, pensioner) VALUES('FIDUPREVISORA', FALSE, TRUE);
+INSERT INTO public.agreement (agreement, active, pensioner) VALUES('CAJA DE RETIRO FF MM', FALSE, TRUE);
+INSERT INTO public.agreement (agreement, active, pensioner) VALUES('RAMA JUDICIAL', TRUE, FALSE);
+INSERT INTO public.agreement (agreement, active, pensioner) VALUES('CONSORCIO PENSIONES DE ANTIOQUIA', FALSE, TRUE);
+INSERT INTO public.agreement (agreement, active, pensioner) VALUES('POSITIVA', FALSE, TRUE);
+INSERT INTO public.agreement (agreement, active, pensioner) VALUES('MINDEFENSA PENSIONADOS', FALSE, TRUE);
+INSERT INTO public.agreement (agreement, active, pensioner) VALUES('COLFONDOS', FALSE, TRUE);
+INSERT INTO public.agreement (agreement, active, pensioner) VALUES('PROTECCION', FALSE, TRUE);
