@@ -40,8 +40,8 @@ import {
     @Column({ type: 'int' })
     thirdEntityId: number;
 
-    @Column({ type: 'varchar' })
-    mode: string;
+    @Column({ type: 'int' })
+    mode: number;
   
   }
   

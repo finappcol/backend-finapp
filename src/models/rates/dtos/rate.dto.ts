@@ -25,15 +25,13 @@ import {
     @IsNumber()
     readonly term: number;
 
-    @ApiProperty({ description: 'Monto' })
+    @ApiProperty({ description: 'Amount' })
     @IsNumber()
-    readonly income: number;
+    readonly amount: number;
 
-    @ApiProperty({ description: 'Tipo' })
-    @IsString()
-    readonly mode: string;
-
-
+    @ApiProperty({ description: 'Mode' })
+    @IsNumber()
+    readonly mode: number;
   }
   
   export class UpdateUserDto extends PartialType(CreateRateDto) {}

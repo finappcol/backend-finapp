@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { FinancialEntity } from 'src/models/financialEntity/entities/financialEntity.entity';
 import { DataSource, Repository } from 'typeorm';
 import { AgreementEntity } from '../../entities/agreement.entity';
+import { ModeEntity } from '../../entities/modes.entity';
 
 @Injectable()
 export class CatalogsService {
@@ -12,6 +13,9 @@ export class CatalogsService {
 
         @InjectRepository(AgreementEntity)
         private agreementsRepo: Repository<AgreementEntity>,
+
+        @InjectRepository(ModeEntity)
+        private modesRepo: Repository<ModeEntity>,
 
         private dataSource: DataSource,
     ) {}
@@ -24,13 +28,7 @@ export class CatalogsService {
         return this.agreementsRepo.find();
     }
 
-    getTypes(){
-        return [
-            {"id":1, "type":"Ampliación"},
-            {"id":2, "type":"Compra de Cartera"},
-            {"id":3, "type":"Nuevo"},
-            {"id":4, "type":"Retanqueo"},
-            {"id":5, "type":"Retanqueo Libre Inversión"},
-        ]
+    getModes(){
+        return this.modesRepo.find();
     }
 }

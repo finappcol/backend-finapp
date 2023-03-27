@@ -17,8 +17,8 @@ export class CatalogsController {
         return this.catalogsService.getAgreements();
     }
 
-    @Get('/types')
+    @Get('/modes')
     getTypes() {
-        return this.catalogsService.getTypes();
+        return this.catalogsService.getModes();
     }
 }
