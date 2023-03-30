@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { DataSource, Repository } from 'typeorm';
 import { CreateAmortizationDto } from '../dtos/amortization.dto';
 import { Amortization } from '../entities/amortizations/amortization.entity';
+import { CapacityDto } from '../dtos/capacity.dto';
 
 @Injectable()
 export class AmortizationsService {
@@ -46,5 +47,25 @@ export class AmortizationsService {
     };
 
     return response;
+  }
+
+  repaymentCapacity(data: CapacityDto){
+
+    const income = Number(data.income);
+    const otherIncome = Number(data.otherIncome);
+    const expenses = Number(data.expenses);
+    const discounts = Number(data.discounts);
+    const legalDiscounts =  -(income * 0.08) ; // TODO: create var to porcentaje    
+
+    const totalIncome = income + otherIncome + legalDiscounts;
+    const protectionValue = totalIncome * 0.08 ; // TODO: create var to porcentaje
+
+    const totalExpenses = protectionValue + expenses + discounts;
+
+    const totalCapacity = +totalIncome - totalExpenses;
+    console.log(66, data);
+    console.log(67, legalDiscounts, totalIncome, protectionValue, totalExpenses, totalCapacity);
+
+    return Math.round(totalCapacity);
   }
 }
